@@ -13,6 +13,12 @@ parser.add_argument(
     choices=['nano', 'small', 'base', 'medium', 'large'],
     help='Model version to use: nano (fastest), small, base, medium, or large (most accurate). Default: base'
 )
+parser.add_argument(
+    '--checkpoint',
+    type=str,
+    default=None,
+    help='Path to custom checkpoint weights file (e.g., checkpoint_best_total.pth). If not provided, uses pretrained weights.'
+)
 args = parser.parse_args()
 
 # Map model choice to model class
@@ -26,7 +32,12 @@ model_map = {
 
 # Initialize the selected model
 print(f"Loading RF-DETR {args.model.upper()} model...")
-model = model_map[args.model]()
+if args.checkpoint:
+    print(f"Loading custom weights from: {args.checkpoint}")
+    model = model_map[args.model](pretrain_weights=args.checkpoint)
+else:
+    print("Using pretrained weights...")
+    model = model_map[args.model]()
 print(f"Model loaded successfully!")
 
 cap = cv2.VideoCapture(0)

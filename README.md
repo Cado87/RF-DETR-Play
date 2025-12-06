@@ -26,3 +26,6 @@ python Run-Pre-Trained-Model.py --model medium
 # Use the large model (most accurate)
 python Run-Pre-Trained-Model.py --model large
 
+# Load custom weights
+python Run-Pre-Trained-Model.py --model nano --checkpoint Weights/checkpoint_best_total_model_nano.pth
+
