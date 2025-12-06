@@ -26,6 +26,9 @@ python Run-Pre-Trained-Model.py --model medium
 # Use the large model (most accurate)
 python Run-Pre-Trained-Model.py --model large
 
-# Load custom weights
+# Load custom weights (auto-detects num_classes and class names from checkpoint)
 python Run-Pre-Trained-Model.py --model nano --checkpoint Weights/checkpoint_best_total_model_nano.pth
+
+# Load custom weights with manual num_classes specification (if auto-detection fails)
+python Run-Pre-Trained-Model.py --model nano --checkpoint Weights/checkpoint_best_total_model_nano.pth --num-classes 8
 
