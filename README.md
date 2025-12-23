@@ -26,6 +26,17 @@ python Run-Pre-Trained-Model.py --model medium
 # Use the large model (most accurate)
 python Run-Pre-Trained-Model.py --model large
 
+## Webcam Options
+
+# Use default webcam (camera index 0)
+python Run-Pre-Trained-Model.py --camera 0
+
+# Use USB webcam (camera index 1)
+python Run-Pre-Trained-Model.py --camera 1
+
+# Combine model selection with camera selection
+python Run-Pre-Trained-Model.py --model nano --camera 1
+
 # Load custom weights (auto-detects num_classes and class names from checkpoint)
 python Run-Pre-Trained-Model.py --model nano --checkpoint Weights/checkpoint_best_total_model_nano.pth
 

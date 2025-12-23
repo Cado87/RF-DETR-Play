@@ -26,6 +26,12 @@ parser.add_argument(
     default=None,
     help='Number of classes in the custom model. If not provided and using checkpoint, will auto-detect from checkpoint. Default: 90 (COCO)'
 )
+parser.add_argument(
+    '--camera',
+    type=int,
+    default=0,
+    help='Camera index to use (0 for default webcam, 1 for first USB webcam, 2 for second USB webcam, etc.). Default: 0'
+)
 args = parser.parse_args()
 
 # Map model choice to model class
@@ -90,7 +96,7 @@ if class_names is not None:
 else:
     CLASSES = COCO_CLASSES
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(args.camera)
 while True:
     success, frame = cap.read()
     if not success:
